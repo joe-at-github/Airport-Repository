@@ -12,17 +12,20 @@ class Airport
     def arrival_time
         ((self.arrivals[0].departure + self.arrivals[0].estimated_duration.seconds).round).strftime("%H:%M")
     end
-    
+
     def arrival_list
+        #make_line
         io = StringIO.new
 
         io.puts self.line
 
+        #make_headings
         io << headings.map { |heading| heading.ljust(column_width) }.join(separator)
         io.puts separator.rstrip
 
         io.puts self.line 
 
+        #make_rows
         self.arrivals.each do |arrival|
             number = arrival.number
             airline = arrival.airline
@@ -34,11 +37,13 @@ class Airport
             io << row.map { |cell| cell.ljust(column_width) }.join(separator)
             io.puts separator.rstrip
             io.puts line("-")
+        end
         
 
         io.string 
     end
 
+    #table_lines
     def line(style = "=")
       column_nb = headings.count
 
