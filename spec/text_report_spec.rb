@@ -3,8 +3,9 @@ require_relative 'spec_helper'
 
 describe Report do
 
-  describe TextReport do
+  describe "TextReport" do
     before do
+      skip
       @report = TextReport.new(headings: ["Flight No.", "Airline", "From", "Estimated Arrival Time"],
             rows: [["BA-12345", "British Airways", "LHR", "21:47"], ["AL-666", "Alitalia", "LHR", "21:47"]])
     end
@@ -19,16 +20,15 @@ BA-12345               | British Airways        | LHR                    | 21:47
 AL-666                 | Alitalia               | LHR                    | 21:47                  |
 ----------------------------------------------------------------------------------------------------
 REPORT
-
-      expected.must_equal(@report.to_s)
+      # binding.pry
+      expected.must_equal(@report.make_report)
       
     end
 
   end
 
-  describe "HtmlReport" do
+  describe HtmlReport do
     before do
-      skip
       @report = HtmlReport.new(headings: ["Flight No.", "Airline", "From", "Estimated Arrival Time"],
         rows: [["BA-12345", "British Airways", "LHR", "21:47"], ["AL-666", "Alitalia", "LHR", "21:47"]])
     end
@@ -60,9 +60,7 @@ REPORT
 </html>
 REPORT
 
-      expected.each_line.with_index do |line, i|
-        line.strip.must_equal(@report.lines[i].strip)
-      end
+      expected.must_equal(@report.make_report)
     end
 
   end
