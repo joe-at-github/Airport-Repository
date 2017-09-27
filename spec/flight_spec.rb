@@ -7,14 +7,14 @@ describe Flight do
 		@jfk = Point.new(lat: 40.6413111, lng: -73.77813909999999)
 
 		@flight = Flight.new(
-		:number => 'BA-12345',
-	  :airline => 'British Airways',
-	  :from => @lhr,
-	  :to => @jfk,
-	  :departure => Time.utc(2014, 11, 1, 14, 47),
-	  :speed_kph => 790,
-	  :bearing => 3,
-	  :aircraft => "Boeing 747",
+			:number => 'BA-12345',
+			:airline => 'British Airways',
+			:from => @lhr,
+			:to => @jfk,
+			:departure => Time.utc(2014, 11, 1, 14, 47),
+			:speed_kph => 790,
+			:bearing => 3,
+			:aircraft => "Boeing 747",
 		)
 	end
 
@@ -56,16 +56,9 @@ describe Flight do
     	@result.must_equal 7.12
     end
   end
+
 end
 
-# describe "flight_time_left" do
-#   before do
-#     @gallons_burned_per_hour = 15
-#     @gallons_left = 60
-#   end
 
-#   it "should calculate the total time the aircraft can fly as 4 hours" do
-#   end
-# end
 
 

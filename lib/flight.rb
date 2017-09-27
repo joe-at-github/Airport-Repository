@@ -1,7 +1,5 @@
 class Flight
 
-	
-
 	attr_reader :number, :airline, :from, :to, :departure, :speed_kph, :bearing, :aircraft
 
 	def initialize(options = {})
@@ -14,6 +12,10 @@ class Flight
 		distance = from.distance_to(to)
 		seconds = distance / speed_kph * 3600
 		Duration.new(seconds)
+	end
+
+	def estimated_arrival_time
+		(departure + estimated_duration.seconds).strftime
 	end
 
 	def to_s 
