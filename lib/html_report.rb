@@ -1,8 +1,9 @@
 class HtmlReport < Report
 	
-	def initialize(headings:, rows:)
-		@headings = headings
-		@rows = rows
+	def initialize(**args)
+		super args
+		# io = StringIO.new("<!DOCTYPE html>") either in make_report or initializer
+		
 	end	
 
 	# def make_report

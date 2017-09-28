@@ -5,16 +5,17 @@ class Report
 		@rows = rows
 	end	
 
-	#make_report
+	
 	def make_report
-
-		#make_headings
-
-		#make_rows
+		@io = StringIO.new
+		make_headings
+		make_rows
+		@io.string 
+  end
+  
+  protected
+	def make_headings
 	end
-
-	# def make_headings
-	# end
 
 	def make_rows
 	end
